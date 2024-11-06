@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier Interactif</title>
+    <style>
+        /* Style du conteneur principal */
+        .calendar-container {
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Style de l'en-tête du calendrier */
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+ 
+        .month-display {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+ 
+        /* Style des boutons de navigation */
+        .prev, .next {
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #333;
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+ 
+        /* Style de la grille des jours */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+        }
+ 
+        /* Style des noms des jours */
+        .calendar-day-names, .calendar-day {
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+        }
+ 
+        .calendar-day {
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+        }
+ 
+        /* Couleur des jours sélectionnés */
+        .calendar-day:hover {
+            background-color: #ddd;
+        }
+ 
+        /* Couleur du jour actuel */
+        .current-day {
+            background-color: #ffeb3b;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <button class="prev" onclick="changeMonth(-1)">&#10094;</button>
+            <span class="month-display" id="monthDisplay"></span>
+            <button class="next" onclick="changeMonth(1)">&#10095;</button>
+        </div>
+        <div class="calendar-grid">
+            <!-- Noms des jours de la semaine -->
+            <div class="calendar-day-names">Lun</div>
+            <div class="calendar-day-names">Mar</div>
+            <div class="calendar-day-names">Mer</div>
+            <div class="calendar-day-names">Jeu</div>
+            <div class="calendar-day-names">Ven</div>
+            <div class="calendar-day-names">Sam</div>
+            <div class="calendar-day-names">Dim</div>
+ 
+            <!-- Les jours du calendrier seront injectés ici par JavaScript -->
+            <div id="calendarDays"></div>
+        </div>
+    </div>
+ 
+    <script>
+        const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+        const currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+ 
+        function renderCalendar() {
+            const monthDisplay = document.getElementById("monthDisplay");
+            const calendarDays = document.getElementById("calendarDays");
+            calendarDays.innerHTML = "";
+ 
+            monthDisplay.innerText = `${monthNames[currentMonth]} ${currentYear}`;
+ 
+            // Détermine le premier jour du mois
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+ 
+            // Ajouter des cellules vides pour les jours avant le début du mois
+            for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
+                calendarDays.innerHTML += `<div></div>`;
+            }
+ 
+            // Remplir les jours du mois
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement("div");
+                dayElement.classList.add("calendar-day");
+                dayElement.innerText = day;
+ 
+                // Marquer le jour actuel
+                if (day === currentDate.getDate() && currentMonth === currentDate.getMonth() && currentYear === currentDate.getFullYear()) {
+                    dayElement.classList.add("current-day");
+                }
+ 
+                calendarDays.appendChild(dayElement);
+            }
+        }
+ 
+        // Fonction pour changer de mois
+        function changeMonth(direction) {
+            currentMonth += direction;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar();
+        }
+ 
+        // Initialisation du calendrier
+        renderCalendar();
+    </script>
+</body>
+</html>
