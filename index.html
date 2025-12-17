@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio SISR | AZIZ Saem</title>
+    <style>
+        /* Importation des polices */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+        /* Variables CSS */
+        :root {
+            --primary-color: #3f51b5; /* Un bleu plus doux */
+            --secondary-color: #f44336; /* Un rouge pour les accents */
+            --text-color: #333;
+            --heading-color: #222;
+            --bg-light: #f7f9fc;
+            --bg-dark: #303f9f; /* Bleu foncé pour le header/footer */
+            --white: #fff;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --timeline-line-color: #ccc;
+        }
+
+        /* Styles Généraux */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--heading-color);
+            margin-bottom: 25px;
+        }
+
+        h1 { font-size: 3.5em; margin-bottom: 10px; color: var(--white); }
+        h2 {
+            font-size: 2.8em;
+            text-align: center;
+            padding-bottom: 15px;
+            margin-bottom: 50px;
+            position: relative;
+            font-weight: 700;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        h3 { font-size: 1.8em; margin-top: 0; color: var(--primary-color); }
+
+        p { margin-bottom: 15px; }
+        p.lead {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        /* Boutons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px 20px;
+            font-size: 0.9em;
+        }
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .btn-social {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 5px;
+        }
+        .btn-social:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Header (Hero Section) */
+        .hero {
+            background: var(--bg-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0 60px;
+        }
+
+        .hero .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px var(--shadow-light);
+        }
+
+        .hero .tagline {
+            font-size: 1.4em;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .main-nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .main-nav ul li a {
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1em;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav ul li a:hover::after,
+        .main-nav ul li a.active::after {
+            width: 100%;
+        }
+        .main-nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        .section-padded {
+            padding: 80px 0;
+        }
+
+        .bg-light {
+            background-color: var(--bg-light);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Timeline (Parcours) */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--timeline-line-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--white);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-left {
+            left: 0;
+        }
+        .timeline-right {
+            left: 50%;
+        }
+        .timeline-right::after {
+            left: -16px;
+        }
+        .timeline-left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--bg-light);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--bg-light);
+        }
+        .timeline-right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--bg-light);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--bg-light) transparent transparent;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--bg-light);
+            position: relative;
+            border-radius: 6px;
+        }
+        .timeline-content h4 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .timeline-content p.dates {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+
+        /* Styles existants pour Skills, Projects, Contact... */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .skill-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px var(--shadow-light);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px var(--shadow-light);
+        }
+        .skill-item i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .skill-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--heading-color);
+        }
+        .skill-item ul {
+            text-align: left;
+            list-style: disc;
+            margin-left: 20px;
+        }
+        .skill-item ul li {
+            margin-bottom: 8px;
+        }
+        .project-card {
+            display: flex;
+            align-items: center;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px var(--shadow-light);
+            margin-bottom: 60px;
+            overflow: hidden;
+        }
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+        .project-card img {
+            width: 40%;
+            height: auto;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-right: 3px solid var(--primary-color);
+        }
+        .project-card.reverse img {
+            border-left: 3px solid var(--primary-color);
+            border-right: none;
+            order: 2;
+        }
+        .project-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+        .project-content h3 {
+            margin-bottom: 15px;
+        }
+        .project-content p strong {
+            color: var(--heading-color);
+        }
+        .project-content ul {
+            list-style: circle;
+            margin-left: 25px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+        .project-content ul li {
+            margin-bottom: 5px;
+        }
+        .project-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        #veille .veille-icon {
+            width: 100px;
+            height: auto;
+            margin: 20px auto 30px;
+            display: block;
+            color: var(--primary-color);
+        }
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        /* Tableau de Synthèse */
+        .synthesis-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+        .synthesis-table th, .synthesis-table td {
+            border: 1px solid var(--timeline-line-color);
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .synthesis-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .synthesis-table tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+        .synthesis-table td.skill-area {
+            font-weight: 600;
+            background-color: #e9ecef;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; margin-bottom: 30px; }
+            p.lead { font-size: 1.1em; }
+
+            .hero { padding: 60px 0 40px; }
+            .hero .profile-pic { width: 140px; height: 140px; }
+            .hero .tagline { font-size: 1.1em; margin-bottom: 30px; }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 25px;
+            }
+            .main-nav ul li a {
+                font-size: 1em;
+            }
+
+            .section-padded { padding: 60px 0; }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Timeline Mobile */
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid var(--bg-light);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--bg-light) transparent transparent;
+            }
+            .timeline-left::after, .timeline-right::after {
+                left: 15px;
+            }
+            .timeline-left {
+                left: 0%;
+            }
+            .timeline-right {
+                left: 0%;
+            }
+            .synthesis-table, .synthesis-table th, .synthesis-table td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .synthesis-table th {
+                text-align: center;
+            }
+            .synthesis-table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            .synthesis-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 15px;
+                font-weight: 600;
+                text-align: left;
+            }
+            .synthesis-table td.skill-area {
+                background-color: #e9ecef !important;
+                text-align: center;
+                font-size: 1.1em;
+            }
+
+            .project-card {
+                flex-direction: column;
+            }
+            .project-card img {
+                width: 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 3px solid var(--primary-color);
+            }
+            .project-card.reverse img {
+                border-bottom: 3px solid var(--primary-color);
+                border-left: none;
+                order: 0;
+            }
+            .project-content {
+                padding: 25px;
+            }
+            .project-links {
+                justify-content: center;
+            }
+            .contact-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <img src="images/profile.jpg.jpg" alt="Photo de profil de AZIZ Saem" class="profile-pic">
+            <h1>AZIZ Saem</h1>
+            <p class="tagline">Étudiant BTS SIO Option A SISR | Futur Ingénieur Systèmes & Réseaux</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about">Présentation</a></li>
+                    <li><a href="#parcours">Mon Parcours</a></li>
+                    <li><a href="#projects-tps">Projets / TP</a></li>
+                    <li><a href="#stages">Stages</a></li>
+                    <li><a href="#synthesis">Tableau de Synthèse</a></li>
+                    <li><a href="#skills">Compétences</a></li>
+                    <li><a href="#veille">Veille Technologique</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section-padded bg-light">
+            <div class="container text-center">
+                <h2>À propos de moi</h2>
+                <p class="lead">Actuellement en 2e année de BTS SIO, option SISR, je me spécialise dans la sécurisation et l'administration des systèmes et réseaux. Fort d'une première expérience au lycée général Camille Claudel à Pontault-Combault, j'ai développé une grande rigueur méthodologique, essentielle en Cybersécurité.</p>
+                <p>Mon objectif est de devenir un expert en infrastructures sécurisées, capable de déployer et maintenir des systèmes robustes face aux menaces numériques.</p>
+                <a href="Documents\CV1 2ème année (1).pdf" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Mon CV </a>
+            </div>
+        </section>
+
+        <section id="parcours" class="section-padded">
+            <div class="container">
+                <h2>Mon Parcours Scolaire</h2>
+                <div class="timeline">
+
+                    <div class="timeline-item timeline-left">
+                        <div class="timeline-content">
+                            <h4>BTS SIO Option A SISR</h4>
+                            <p class="dates">Depuis Septembre 2024</p>
+                            <p><strong>Lycée Le Rebours, Paris 13ème arrondissement </strong></p>
+                            <p>Formation spécialisée en BTS SIO, option A SISR. Acquisition de compétences en Administration Windows/Linux, Virtualisation et en Cybersécurité.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-right">
+                        <div class="timeline-content">
+                            <h4>1 année d’études en licences de Langues (L1 LLCER Espagnol)</h4>
+                            <p class="dates">Septembre 2023 - Mai 2024</p>
+                            <p><strong>Université Gustave Eiffel, Champs-sur-Marne</strong></p>
+                            <p> L1 LLCER Espagnol </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-left">
+                        <div class="timeline-content">
+                            <h4>Baccalauréat Général, avec spécialisation scientifique (Mathématiques, Sciences de l'ingénieur, Physique-Chimie) </h4>
+                            <p class="dates">Année d'obtention : 2023 </p>
+                            <p class="dates">Septembre 2020 - Juillet 2023</p>
+                            <p><strong> Lycée Camille Claudel, Pontault-Combault </strong></p>
+                            <p> Choix des orientations vers les spécialités scientifiques (Mathématiques, Sciences de l'ingénieur, Physique-Chimie). </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects-tps" class="section-padded bg-light">
+            <div class="container">
+                <h2>Projets et Travaux Pratiques</h2>
+                <p class="lead text-center">Cette section présente les projets concrets (professionnels et académiques) que j'ai réalisés pour valider mes compétences SISR et Cybersécurité.</p>
+                
+                <div class="project-card">
+                    <img src="images\Capture piscS.jpeg" alt="Illustration Piscine SA&EM">
+                    <div class="project-content">
+                        <h3>Projet 1 : Création de site vitrine d'une piscine fictive SA&EM</h3>
+                        <p><strong>Contexte :</strong> Ce site vitrine met en lumière, de manière fictive, une piscine à Mantes-la-Jolie. Il valorise les différentes séances proposées, les aspects grandioses aquatiques et est axé principalement sur l'expérience client.</p>
+                        <ul>
+                            <li><strong>Technologies utilisées :</strong> HTML, CSS. </li>
+                            <li><strong>Compétences travailées : </strong> Hébergement du site web en ligne, HTML5 / CSS3, Design Visuel, Expérience utilisateur (UX/UI). </li>
+                            <li><strong>Lien du site vitrine : </strong> https://saem34z.github.io/ </li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="Documents\Piscine.pdf" target="_blank" class="btn btn-secondary">Rapport <i class="fas fa-file-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reverse">
+                    <img src="images\Capture d’écran 2025-12-11 schema E5 réal 1 .png" alt="Illustration Réseau Sécurisé">
+                    <div class="project-content">
+                        <h3>TP 1 : Création de domaines de diffusion logiques (VLANs) et la mise en place du routage Inter-VLAN.</h3>
+                        <p><strong>Contexte :</strong>  Mise en œuvre de la segmentation réseau par VLAN et du Routage Inter-VLAN pour optimiser la sécurité et la performance de l'infrastructure Cisco de la Société TechInnov Solutions (TIS).</p>
+                        <ul>
+                            <li><strong>Technologies :</strong> Trunking (mode Trunk), VLAN (802.1Q), Routage, logiciel de simulation : Cisco Packet Tracer.</li>
+                            <li><strong>Compétences travaillées :</strong> Installation et configuration d'un réseau, Installation d'un périphérique, Création de domaines de diffusion logiques, Routage Inter-VLAN, Gestion de l’étanchéité des réseaux au niveau 2.</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="Documents\Documentation TP1.zip" target="_blank" class="btn btn-secondary">Documentation (ZIP) <i class="fas fa-book"></i></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <div class="project-card reverse">
+                    <img src="images\mrdbbckup.jpg" alt="Illustration Backup Mrdb">
+                    <div class="project-content">
+                        <h3>TP 2 : Installation et Sécurisation de la base de données MariaDB.</h3>
+                        <p><strong>Contexte :</strong>  Mise à disposition d'un serveur de base de données ( MariaDB à installer) accessible dans l'infrastructure réseau du lycée, avec les identifiants fournis et les droits d'accès configurés, dans le cadre d'un projet réel en classe avec les membres du Groupe SLAM.</p>
+                        <ul>
+                            <li><strong>Technologies :</strong> Système d'exploitation (Debian 13 Linux), SGBD, Commandes Système (sudo, apt), Gestion des Services (systemctl), Commandes SQL, Sauvegarde (mysqldump).</li>
+                            <li><strong>Compétences travaillées :</strong> Création et configuration d'une machine virtuelle Debian (Administration Linux/Système), Installation et gestion du service MariaDB, Sécurisation de la Base de données, Gestion des Utilisateurs et des Droits, Configuration Réseau du SGBD, Codage d'un script Bash.</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="Documents\Documentation TP2.zip" target="_blank" class="btn btn-secondary"> Documentation (ZIP) <i class="fas fa-book"></i></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="stages" class="section-padded">
+            <div class="container">
+                <h2>Expérience Professionnelle (Stage)</h2>
+                <p class="lead text-center">Mon stage m'a énormément permis d'appliquer mes connaissances théoriques et de découvrir les réalités du métier en entreprise.</p>
+
+                <div class="project-card">
+                    <img src="images\icone site wp bemod.jpg" alt="Logo de l'entreprise ou illustration générique">
+                    <div class="project-content">
+                        <h3>Stage de 6 semaines - Réalisation d'un site vitrine pour l'entreprise Bemod </h3>
+                        <p class="dates">Du 19 mai au 27 juin 2025 | <strong>Bemod (Le Spot) à Evry-Courcouronnes</strong></p>
+                        </li>Lien du site web : HTTPS://MONSITE193.WORDPRESS.COM/2025/06/29/BEMOD/</li>
+                        <ul>
+                            <li>Mission Clé :
+                                <ul>
+                                    <li>Création d'un site vitrine Wordpress pour la boutique (page d'accueil, présentation, produits, page de contact).</li>
+                                </ul>
+                            </li>
+                            <li>Apports : Rigueur dans la conception et structuration du site web,approfondissement des connaissances en CMS (NO-CODE) adaptation à une demande de client réelle, travail en équipe.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin-top: 50px;">
+                    <a href="Documents\Rapports de stage1&orstg.zip.zip" download class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i> Télécharger Rapports de Stage (ZIP)
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="synthesis" class="section-padded bg-light">
+            <div class="container text-center">
+                <h2>Tableau de Synthèse</h2>
+                <p class="lead">Ce document officiel rassemble les compétences du référentiel BTS SIO avec l'ensemble de mes réalisations professionnelles et académiques.</p>
+
+                <div style="margin-top: 50px;">
+                    <a href="Documents\Tableau de synthèse\8 - BTS SIO - Annexe 8-1 - Tableau de synthe╠Çse - Epreuve E5 - 18 déc 2025.pdf" download class="btn btn-primary">
+                        <i class="fas fa-table"></i> Télécharger le Tableau de Synthèse (PDF)
+                    </a>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="skills" class="section-padded">
+            <div class="container">
+                <h2>Mes Compétences Techniques</h2>
+                <div class="skills-grid">
+
+                    <div class="skill-item">
+                        <i class="fas fa-network-wired"></i>
+                        <h3>Protocoles & Services Réseau</h3>
+                        <ul>
+                            <li>Protocoles : OSI, TCP/IP, ICMP, HTTP, FTP, SMTP.</li>
+                            <li>Services : DNS, DHCP, NAT Pat (Substitution - Redirection), PKI, VPN.</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-item">
+                        <i class="fas fa-server"></i>
+                        <h3>Administration Systèmes & Réseaux</h3>
+                        <ul>
+                            <li>Systèmes : Windows (Server 2003 & 2016), Linux (Debian 13, Ubuntu).</li>
+                            <li>Active Directory : Profils itinérants, Gestion des droits (ACL), GPO.</li>
+                            <li>Déploiement OS : WDS - MDT.</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-item">
+                        <i class="fas fa-desktop"></i>
+                        <h3>Gestion de Parc & Supervision</h3>
+                        <ul>
+                            <li>Inventaire et Gestion : GLPI (Gestion du Parc informatique d'une entreprise).</li>
+                            <li>Inventaire (Parc informatique) : OCS Inventory.</li>
+                            <li>Serveurs Web : Installation et Configuration (Apache et NGINIX).</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-item">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Virtualisation & Conteneurisation</h3>
+                        <ul>
+                            <li>Virtualisation : VMware Workstation Pro, VirtualBox.</li>
+                            <li>Hyperviseur Serveur : Proxmox.</li>
+                            <li>Conteneurisation : Exploitation de Docker.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <i class="fas fa-code"></i>
+                        <h3>Outils & Standards</h3>
+                        <ul>
+                            <li>Protocoles de Gestion : SNMP.</li>
+                            <li>Serveur Web Microsoft : IIS.</li>
+                            <li>Adressage IP : IPv4, IPv6.</li>
+                            <li>Langues : Anglais (B2), Espagnol (A2).</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Cybersécurité</h3>
+                        <ul>
+                            <li>Sensibilisation à la Cybersécurité.</li>
+                            <li>Certification Cisco : Introduction à la Cybersécurité (Badge d'obtention).</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="veille" class="section-padded">
+            <div class="container text-center">
+                <h2>Veille Technologique</h2>
+                <img src="images\Capture veille.jpeg" alt="Icône Veille Technologique" class="veille-icon">
+                <p class="lead">Mon sujet de Veille Technologique actuel se concentre sur le Cloud Computing.</p>
+                <p>Le Cloud Computing correspond à la fourniture et l’utilisation de ressources informatiques (serveurs, stockage, bases de données, réseaux, logiciels) accessibles à distance via Internet. Il permet aux entreprises et aux particuliers d’exploiter des serveurs, du stockage, des applications et des services sans gérer directement le matériel physique. Cette technologie repose sur la virtualisation, l’automatisation et des centres de données hautement sécurisés, ce qui en fait un pilier majeur des systèmes d’information modernes.
+                   Le Cloud Computing s’appuie sur de vastes centres de données composés de serveurs physiques performants, de systèmes de stockage à grande capacité et d’équipements réseau à haut débit. Cette infrastructure matérielle, associée à la virtualisation, garantit la disponibilité, la performance et la continuité des services proposés aux utilisateurs.</p>
+                <p>Méthodologie & Outils :
+                   Flux : Google Alerts.
+                   Outils IA : Chat GPT, Mistral AI, Gemini (Synthèse).
+                   Fréquence : Quotidienne.</p>
+                <p>Le Cloud Computing offre aux organisations une grande flexibilité en permettant d’adapter rapidement les ressources informatiques selon les besoins. Il contribue à la réduction des coûts d’infrastructure, facilite le travail collaboratif et améliore l’accessibilité aux services, tout en assurant une meilleure continuité d’activité.</p>
+                <p>Malgré ses avantages, le Cloud Computing présente certaines limites, notamment une dépendance à la connexion Internet et aux fournisseurs de services. Il soulève également des questions liées à la sécurité, à la confidentialité des données et à la maîtrise des coûts, qui nécessitent une gestion rigoureuse et des choix technologiques adaptés.</p>                
+                <p>Dernières actualités analysées :
+                   -Logiciels, cloud, IA : les contrôles à l’exportation deviennent un risque stratégique pour l’IT (16/12/25).
+                   -Palo Alto Networks Actions (PANW) aujourd’hui : Les objectifs de prix des analystes évoluent alors qu’un nouveau rapport sur la sécurité de l’IA redéfinit le débat sur les risques liés au cloud (16/12/25).
+                   -IBM recentre Terraform sur le langage HCL (15/12/25).
+                   -President Lai attends opening of national cloud computing center (15/12/25).
+                   -Perspectives de l’action IBM décembre 2025 : Le rallye de 40 % de Big Blue peut-il se poursuivre grâce à l’IA, au cloud et à la dynamique quantique ? (14/12/25).
+                </p>
+                 <a href="Documents\Veille_Sujet_Nov2025.zip" download class="btn btn-primary">
+                    <i class="fas fa-file-archive"></i> Télécharger la synthèse (ZIP)
+                </a>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padded bg-light">
+            <div class="container text-center">
+                <h2>Contactez-moi</h2>
+                <p class="lead">Je suis ouvert aux opportunités de stage, d'alternance ou de collaboration. N'hésitez pas à me contacter.</p>
+                <div class="contact-buttons">
+                    <a href="mailto:Saemaziz77@gmail.com" class="btn btn-social"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://www.linkedin.com/feed/" target="_blank" class="btn btn-social"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/Saem34z/" target="_blank" class="btn btn-social"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2025 AZIZ Saem. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
