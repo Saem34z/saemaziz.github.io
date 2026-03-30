@@ -199,6 +199,30 @@
         .main-nav ul li a:hover {
             color: var(--primary-color);
         }
+        .experience-block {
+    width: 100%;
+    margin-bottom: 50px;
+    display: block; /* Force le bloc à prendre toute la ligne */
+}
+
+.download-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centre le bouton horizontalement */
+    margin-top: 20px;
+    clear: both; /* Sécurité anti-débordement */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
 
         /* Sections */
         .section-padded {
@@ -646,7 +670,9 @@
             <div class="container">
                 <h2>Expérience Professionnelle (Stage)</h2>
                 <p class="lead text-center">Mon stage m'a énormément permis d'appliquer mes connaissances théoriques et de découvrir les réalités du métier en entreprise.</p>
-
+                
+                <div class="experience-block">
+            <div class="experience-item">
                 <div class="project-card">
                     <img src="images\icone site wp bemod.jpg" alt="Logo de l'entreprise ou illustration générique">
                     <div class="project-content">
@@ -670,8 +696,10 @@
                     </a>
                 </div>
                 </div>
+                <hr style="margin: 40px 0; border: 0; border-top: 1px solid #eee;">
 
-
+        <div class="experience-block">
+            <div class="experience-item">
 
                 <div class="experience-item">
                 <img src="images\logo ngsm.jpg" alt="Logo de la Mairie">
@@ -686,13 +714,14 @@
                 <li>Configuration et brassage de commutateurs Aruba (6000 & 2530-24G).</li>
                 <li>Maintenance matérielle (Démontage/Remontage) et mise à jour des postes (Windows Update).</li>
                 </ul>
-                
+
                 </div>
                 <a
                 
-                <div class="experience-item">
+            <div class="experience-item">
         <a href="Documents\Rapports de stage orls2.zip" class="btn" download>
             Télécharger les Rapports de Stage (ZIP)
+        
         </a>
     </div>
             </div>
@@ -784,24 +813,42 @@
             <div class="container text-center">
                 <h2>Veille Technologique</h2>
                 <img src="images\Capture veille.jpeg" alt="Icône Veille Technologique" class="veille-icon">
-                <p class="lead">Mon sujet de Veille Technologique actuel se concentre sur le Cloud Computing.</p>
-                <p>Le Cloud Computing correspond à la fourniture et l’utilisation de ressources informatiques (serveurs, stockage, bases de données, réseaux, logiciels) accessibles à distance via Internet. Il permet aux entreprises et aux particuliers d’exploiter des serveurs, du stockage, des applications et des services sans gérer directement le matériel physique. Cette technologie repose sur la virtualisation, l’automatisation et des centres de données hautement sécurisés, ce qui en fait un pilier majeur des systèmes d’information modernes.
-                   Le Cloud Computing s’appuie sur de vastes centres de données composés de serveurs physiques performants, de systèmes de stockage à grande capacité et d’équipements réseau à haut débit. Cette infrastructure matérielle, associée à la virtualisation, garantit la disponibilité, la performance et la continuité des services proposés aux utilisateurs.</p>
+                <p class="lead">Mon sujet de Veille Technologique actuel se concentre sur la Cybersécurité.</p>
+                <p>La cybersécurité est l'ensemble des méthodes, processus, outils et comportements qui protègent les systèmes informatiques, les réseaux et les données contre les cyberattaques et les accès non autorisés. </p>
                 <p>Méthodologie & Outils :
-                   Flux : Google Alerts.
-                   Outils IA : Chat GPT, Mistral AI, Gemini (Synthèse).
+                   Flux : Google Alerts, Feedly (Flux RSS).
+                   Outil IA : Gemini (Synthèse).
                    Fréquence : Quotidienne.</p>
-                <p>Le Cloud Computing offre aux organisations une grande flexibilité en permettant d’adapter rapidement les ressources informatiques selon les besoins. Il contribue à la réduction des coûts d’infrastructure, facilite le travail collaboratif et améliore l’accessibilité aux services, tout en assurant une meilleure continuité d’activité.</p>
-                <p>Malgré ses avantages, le Cloud Computing présente certaines limites, notamment une dépendance à la connexion Internet et aux fournisseurs de services. Il soulève également des questions liées à la sécurité, à la confidentialité des données et à la maîtrise des coûts, qui nécessitent une gestion rigoureuse et des choix technologiques adaptés.</p>                
-                <p>Dernières actualités analysées :
-                   -Logiciels, cloud, IA : les contrôles à l’exportation deviennent un risque stratégique pour l’IT (16/12/25).
-                   -Palo Alto Networks Actions (PANW) aujourd’hui : Les objectifs de prix des analystes évoluent alors qu’un nouveau rapport sur la sécurité de l’IA redéfinit le débat sur les risques liés au cloud (16/12/25).
-                   -IBM recentre Terraform sur le langage HCL (15/12/25).
-                   -President Lai attends opening of national cloud computing center (15/12/25).
-                   -Perspectives de l’action IBM décembre 2025 : Le rallye de 40 % de Big Blue peut-il se poursuivre grâce à l’IA, au cloud et à la dynamique quantique ? (14/12/25).
+                <p>La cybersécurité vise à protéger les actifs numériques d'une organisation en garantissant quatre propriétés fondamentales.</p>
+                <p>1. La Disponibilité : 
+Le système et les données doivent être accessibles aux utilisateurs autorisés au moment voulu, sans interruption de service.
+
+Menaces : Attaques par déni de service (DoS/DDoS), pannes matérielles, rançongiciels qui bloquent l'accès.
+
+Solutions : Redondance (serveurs, liens réseau), sauvegardes régulières, onduleurs.
+        2. L'Intégrité : 
+        La donnée ne doit pas être modifiée, altérée ou supprimée de manière accidentelle ou malveillante. Elle doit rester conforme à l'original.
+
+        Menaces : Injection de code, modification frauduleuse de fichiers, erreurs de transmission.
+
+        Solutions : Fonctions de hachage (SHA-256), signatures numériques, gestion des droits d'écriture. 
+        3. La Confidentialité
+L'information ne doit être accessible qu'aux personnes ou processus ayant les droits nécessaires. Elle doit rester secrète pour les autres.
+
+Menaces : Vol de données, interception de communications (écoute réseau), accès non autorisé.
+
+Solutions : Chiffrement (AES, TLS/SSL), protocoles sécurisés (HTTPS, SSH), authentification forte (MFA). 
+
+4. La Traçabilité (ou Preuve)
+Capacité à identifier l'origine d'une action, à savoir "qui a fait quoi et quand". On doit pouvoir garder une trace de chaque événement.
+
+Menaces : Usurpation d'identité, effacement des traces par un pirate, actions anonymes.
+
+Solutions : Journaux d'événements (logs), serveurs de syslog, surveillance réseau, outils de ticketing (GLPI).</p>                
+                <p>
                 </p>
-                 <a href="Documents\Veille_Sujet_Nov2025.zip" download class="btn btn-primary">
-                    <i class="fas fa-file-archive"></i> Télécharger la synthèse (ZIP)
+                 <a href="Documents\VS26\V26art.xlsx" download class="btn btn-primary">
+                    <i class="fas fa-file-archive"></i> Télécharger la synthèse
                 </a>
             </div>
         </section>
