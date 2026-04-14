@@ -324,6 +324,89 @@
             margin-bottom: 10px;
         }
 
+        .realisations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.realisation-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px var(--shadow-light);
+    transition: transform 0.3s ease;
+    position: relative;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.realisation-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.card-content {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: var(--heading-color);
+    font-size: 1.4rem;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skills-list li {
+    background: #e8eaf6;
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.btn-download {
+    background: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: auto; /* Aligne le bouton en bas */
+    transition: opacity 0.3s;
+}
+
+
+.btn-download:hover {
+    opacity: 0.9;
+    color: white;
+}
+
 
         /* Styles existants pour Skills, Projects, Contact... */
         .skills-grid {
@@ -572,6 +655,7 @@
                     <li><a href="#projects-tps">Projets / TP</a></li>
                     <li><a href="#stages">Stages</a></li>
                     <li><a href="#synthesis">Tableau de Synthèse</a></li>
+                    <li><a href="#realisations">Réalisations</a></li>
                     <li><a href="#skills">Compétences</a></li>
                     <li><a href="#veille">Veille Technologique</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -740,6 +824,47 @@
                 
             </div>
         </section>
+
+        <section id="realisations" class="section-padded">
+    <div class="container">
+        <h2 class="text-center">Réalisations Professionnelles</h2>
+        <p class="lead text-center">Projets techniques réalisés dans le cadre du BTS SIO option SISR.</p>
+        
+        <div class="realisations-grid">
+            <div class="realisation-card">
+                <div class="card-badge">Réseau</div>
+                <div class="card-content">
+                    <h3>Segmentation & Routage Inter-VLAN</h3>
+                    <p>Optimisation de l'infrastructure de la société <strong>TechInnov Solutions</strong> via la mise en œuvre de VLANs et d'un routage Inter-VLAN "Router-on-a-stick" sur équipements Cisco.</p>
+                    <ul class="skills-list">
+                        <li>Router-on-a-stick</li>
+                        <li>IEEE 802.1Q</li>
+                        <li>Segmentation réseau</li>
+                    </ul>
+                    <a href="Documents/Réalisation professionnelle TechInnov Solutions.zip" download class="btn btn-download">
+                        <i class="fas fa-file-archive"></i> Télécharger la documentation (ZIP)
+                    </a>
+                </div>
+            </div>
+
+            <div class="realisation-card">
+                <div class="card-badge">Système</div>
+                <div class="card-content">
+                    <h3>Infrastructure Web Haute Disponibilité</h3>
+                    <p>Déploiement pour <strong>Extraweb Solutions</strong> d'un cluster Docker avec équilibrage de charge (HAProxy), pare-feu pfSense et automatisation des logs.</p>
+                    <ul class="skills-list">
+                        <li>Docker / HAProxy</li>
+                        <li>pfSense (NAT/FW)</li>
+                        <li>Scripting Bash</li>
+                    </ul>
+                    <a href="Documents/Réalisation professionnelle ExtraWeb Solutions.zip" download class="btn btn-download">
+                        <i class="fas fa-file-archive"></i> Télécharger la documentation (ZIP)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section id="skills" class="section-padded">
             <div class="container">
